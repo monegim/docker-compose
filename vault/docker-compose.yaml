@@ -1,0 +1,15 @@
+version: "3.6"
+services:
+  vault:
+    image: hashicorp/vault:1.15
+    container_name: vault
+    environment:
+      VAULT_ADDR: http://127.0.0.1:8200
+    ports:
+      - "8201:8201"
+      - "8200:8200"
+    cap_add:
+      - IPC_LOCK
+    volumes:
+        - ./file:/vault/file:rw
+        - ./config:/vault/config:rw
